@@ -3,8 +3,7 @@ import { ArrowRight } from "@phosphor-icons/react";
 
 const reveal = {
   initial: { opacity: 0, y: 22 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.14 },
+  animate: { opacity: 1, y: 0 },
   transition: { duration: 0.5 },
 };
 
@@ -13,13 +12,13 @@ export function ProductCatalog({ company, filter, products, onFilter, onSelect }
 
   return (
     <motion.section
-      className="mx-auto mt-8 w-[min(1320px,calc(100%-2*var(--gutter)))] rounded-xl border border-slate-200 bg-white/95 px-[clamp(18px,4vw,58px)] py-[clamp(42px,6vw,82px)] shadow-[0_24px_58px_rgba(11,29,46,.1)]"
+      className="mx-auto mt-4 w-[min(1320px,calc(100%-2*var(--gutter)))] rounded-xl border border-slate-200 bg-white/95 px-[clamp(16px,4vw,58px)] py-[clamp(34px,6vw,82px)] shadow-[0_24px_58px_rgba(11,29,46,.1)] sm:mt-8"
       id="products"
       {...reveal}
     >
       <header className="mb-7">
         <span className="text-[11px] font-black uppercase tracking-[.22em] text-[var(--brand-accent-dark)]">{company.signature}</span>
-        <h1 className="mt-4 text-[clamp(36px,4.6vw,62px)] font-bold leading-none tracking-[-.05em] text-[var(--brand-dark)]">{company.heading}</h1>
+        <h1 className="mt-4 text-[clamp(32px,4.6vw,62px)] font-bold leading-[.98] tracking-[-.05em] text-[var(--brand-dark)]">{company.heading}</h1>
       </header>
 
       <div className="scrollbar-none mb-6 flex gap-2 overflow-x-auto border-t border-slate-200 pt-4" role="tablist" aria-label="Product categories">
@@ -58,12 +57,12 @@ export function ProductCatalog({ company, filter, products, onFilter, onSelect }
                 }
               }}
             >
-              <div className={`${solar ? "h-[430px] bg-white" : "h-[245px] bg-slate-100"} overflow-hidden`}>
+              <div className={`${solar ? "h-[340px] bg-white sm:h-[390px] xl:h-[430px]" : "h-[220px] bg-slate-100 sm:h-[245px]"} overflow-hidden`}>
                 <img className={`h-full w-full ${solar ? "object-contain" : "object-cover"}`} src={product.image} alt={product.name} />
               </div>
               <div className="p-5.5">
                 <h2 className="min-h-13 text-xl font-bold leading-snug tracking-[-.025em] text-[var(--brand-dark)]">{product.name}</h2>
-                <div className="mt-3.5 flex items-center justify-between gap-3 border-t border-slate-200 pt-4">
+                <div className="mt-3.5 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-4">
                   <strong className="text-base text-[var(--brand-accent-dark)]">{product.price}</strong>
                   <button className="inline-flex items-center gap-1 border-0 bg-transparent p-0 text-xs font-black text-[var(--brand-dark)]" type="button" onClick={(event) => { event.stopPropagation(); onSelect(product); }}>
                     View details <ArrowRight />

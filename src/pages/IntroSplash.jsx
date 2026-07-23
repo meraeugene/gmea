@@ -11,9 +11,9 @@ export function IntroSplash() {
   }, [navigate]);
 
   return (
-    <main className="grid h-screen w-screen place-items-center overflow-hidden bg-white" aria-label="GMEA loading screen">
+    <main className="grid min-h-screen min-h-dvh w-full place-items-center overflow-hidden bg-white px-6" aria-label="GMEA loading screen">
       <motion.img
-        className="block h-auto w-[min(620px,72vw)]"
+        className="block h-auto w-[min(620px,82vw)] sm:w-[min(620px,72vw)]"
         src="/assets/gmea-logo.jpg"
         alt="GMEA"
         initial={{ opacity: 0, scale: 0.98 }}

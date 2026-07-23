@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { companies } from "../data/companies.js";
+import { certificates, companies, electronicsCertificates } from "../data/companies.js";
 import { CompanySwitcher } from "../components/CompanySwitcher.jsx";
 import { ProductCatalog } from "../components/ProductCatalog.jsx";
 import { ProductModal } from "../components/ProductModal.jsx";
@@ -27,7 +27,9 @@ export function CompanyPage({ type }) {
       <CompanySwitcher activePath={company.path} />
       <ProductCatalog company={company} filter={filter} products={products} onFilter={setFilter} onSelect={setSelectedProduct} />
       {type === "solar" && <SolarProjects />}
-      {type !== "rental" && <CertificatesSection />}
+      {type !== "rental" && (
+        <CertificatesSection certificates={type === "electronics" ? electronicsCertificates : certificates} />
+      )}
 
       <AnimatePresence>
         {selectedProduct && <ProductModal product={selectedProduct} company={company} onClose={() => setSelectedProduct(null)} />}

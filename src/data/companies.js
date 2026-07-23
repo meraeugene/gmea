@@ -3,6 +3,21 @@ export const certificates = Array.from({ length: 9 }, (_, index) => ({
   alt: `GMEA certificate and technical training photo ${index + 1}`,
 }));
 
+export const electronicsCertificates = [
+  {
+    image: "/certificates/electronics/mtcna.webp",
+    alt: "MikroTik Certified Network Associate certificate awarded to Edward Marlo V. Pacifico",
+  },
+  {
+    image: "/certificates/electronics/mtcre.webp",
+    alt: "MikroTik Certified Routing Engineer certificate awarded to Edward Marlo V. Pacifico",
+  },
+  {
+    image: "/certificates/electronics/mtcume.webp",
+    alt: "MikroTik Certified User Management Engineer certificate awarded to Edward Marlo V. Pacifico",
+  },
+];
+
 export const solarProjects = [
   { image: "/projects/solar/client5.jpg", title: "Completed Rooftop Installation" },
   { image: "/projects/solar/client1.jpg", title: "Residential Solar Array" },

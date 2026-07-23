@@ -21,9 +21,9 @@ export function ProductModal({ product, company, onClose }) {
   const solar = company.theme === "solar";
 
   return (
-    <motion.div className="fixed inset-0 z-100 grid place-items-center bg-slate-950/70 p-3.5 backdrop-blur-md md:p-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onMouseDown={onClose}>
+    <motion.div className="fixed inset-0 z-100 grid place-items-center bg-slate-950/70 p-2.5 backdrop-blur-md sm:p-4 md:p-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onMouseDown={onClose}>
       <motion.section
-        className="relative grid max-h-[calc(100vh-28px)] w-full max-w-[980px] grid-cols-1 overflow-y-auto rounded-2xl border border-slate-300 bg-white shadow-[0_28px_80px_rgba(0,0,0,.28)] md:max-h-[calc(100vh-48px)] md:grid-cols-[minmax(320px,.95fr)_minmax(0,1.05fr)]"
+        className="relative grid max-h-[calc(100dvh-20px)] w-full max-w-[980px] grid-cols-1 overflow-y-auto overscroll-contain rounded-xl border border-slate-300 bg-white shadow-[0_28px_80px_rgba(0,0,0,.28)] sm:max-h-[calc(100dvh-32px)] sm:rounded-2xl md:max-h-[calc(100dvh-48px)] md:grid-cols-[minmax(280px,.95fr)_minmax(0,1.05fr)]"
         role="dialog"
         aria-modal="true"
         aria-labelledby="product-modal-title"
@@ -35,13 +35,13 @@ export function ProductModal({ product, company, onClose }) {
       >
         <button className="absolute right-4 top-4 z-2 grid size-10 place-items-center rounded-full border border-slate-200 bg-white/95 text-xl text-[var(--brand-dark)] shadow-md hover:border-[var(--brand-accent)]" type="button" onClick={onClose} aria-label="Close product details" autoFocus><X /></button>
 
-        <div className="relative h-[230px] overflow-hidden bg-slate-100 md:h-auto md:min-h-[540px]">
+        <div className="relative h-[clamp(190px,34dvh,280px)] overflow-hidden bg-slate-100 md:h-auto md:min-h-[520px]">
           <img className={`absolute inset-0 h-full w-full ${solar ? "object-contain" : "object-cover"}`} src={product.image} alt="" />
         </div>
 
-        <div className="self-center px-6 py-8 md:px-12 md:py-13">
+        <div className="self-center px-5 py-7 sm:px-7 sm:py-9 md:px-10 lg:px-12 lg:py-13">
           <span className="text-[10px] font-black uppercase tracking-[.14em] text-[var(--brand-accent-dark)]">{company.label}</span>
-          <h2 className="mr-10 mt-3 mb-4.5 text-[clamp(30px,4vw,46px)] font-bold leading-[1.04] tracking-[-.045em] text-[var(--brand-dark)]" id="product-modal-title">{product.name}</h2>
+          <h2 className="mr-9 mt-3 mb-4.5 text-[clamp(27px,4vw,46px)] font-bold leading-[1.04] tracking-[-.045em] text-[var(--brand-dark)]" id="product-modal-title">{product.name}</h2>
           {product.details?.length > 0 && (
             <ul className="mb-5.5 list-disc pl-5 text-[var(--brand-dark)] marker:text-[var(--brand-accent)]">
               {product.details.map((detail) => <li className="my-2 leading-relaxed" key={detail}>{detail}</li>)}
